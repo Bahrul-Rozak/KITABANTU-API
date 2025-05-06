@@ -5,7 +5,8 @@ const dotenv = require("dotenv");
 const { sequelize } = require("./models");
 const authRoutes = require("./routes/auth");
 const projectRoutes = require('./routes/projects'); 
-const categoryRoutes = require('./routes/categories')
+const categoryRoutes = require('./routes/categories');
+const commentRoutes = require('./routes/comments');
 
 const errorHandler = require("./middlewares/errorHandler");
 
@@ -39,6 +40,7 @@ app.get("/", (req, res) => {
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/projects", projectRoutes);
 app.use("/api/v1/categories", categoryRoutes);
+app.use("/api/v1/comments", commentRoutes);
 
 // Menjalankan server
 const PORT = process.env.PORT || 3000;
