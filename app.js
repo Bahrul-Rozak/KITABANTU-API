@@ -7,6 +7,7 @@ const authRoutes = require("./routes/auth");
 const projectRoutes = require('./routes/projects'); 
 const categoryRoutes = require('./routes/categories');
 const commentRoutes = require('./routes/comments');
+const backerRoutes = require('./routes/backers');
 
 const errorHandler = require("./middlewares/errorHandler");
 
@@ -41,6 +42,7 @@ app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/projects", projectRoutes);
 app.use("/api/v1/categories", categoryRoutes);
 app.use("/api/v1/comments", commentRoutes);
+app.use("/api/v1/projects", backerRoutes);
 
 // Menjalankan server
 const PORT = process.env.PORT || 3000;
