@@ -20,6 +20,19 @@ exports.getAllCategories = async (req, res) => {
 exports.createCategory = async (req, res) => {
   try {
     const { name } = req.body;
+
+    // Cek apakah kategori dengan nama yang sama sudah ada
+    const existingCategory = await Category.findOne({
+      where: { name },
+    });
+
+    if (existingCategory) {
+      return res.status(400).json({
+        error: "Kategori dengan nama ini sudah ada",
+      });
+    }
+
+    // Jika belum ada, buat kategori baru
     const category = await Category.create({ name });
     res.status(201).json({
       message: "Kategori berhasil dibuat",
